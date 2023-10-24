@@ -1,9 +1,10 @@
+
+ //input={1,2,3,4,5,6,7} output=4 5 3 6 2 7 1 
+// output={1,2,1,4,5,6,8,8} output=4 5 2 6 1 8 1 8
+
+
 package ArraysProblems;
-
 import java.util.Arrays;
-
-
-
 import java.util.*;
 import java.lang.*;
 import java.util.Scanner;
