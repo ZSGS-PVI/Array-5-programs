@@ -8,31 +8,54 @@ import java.util.*;
 import java.lang.*;
 import java.util.Scanner;
 public class AlternateSort {
-    public static void main(String[] args) {
-        int[] input = {1, 2, 3, 4, 5, 6,7};
-        int n = input.length;
 
-        int[] output = new int[n];
-        
-        int oddIndex = 0;
-        int evenIndex = n -1;
+	public static int[] findArray(int originalArray[], int  copyArray[],int len) {
+		
+		  int oddIndex = 0; 
+		   int evenIndex = len - 1;
+		    for(int i = len - 1; i >= 0; i--)
+		    {
+		      if(i % 2 != 0)
+		      {
+		    	  originalArray[i] = copyArray[evenIndex];
+		       evenIndex --;
+		      }
+		      else{
+		    	  originalArray[i] = copyArray[oddIndex];
+		        oddIndex++;
+		      }
+		    }
+		    
+		    return  originalArray;
+	}
 
-        for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                output[i] = input[oddIndex];
-                oddIndex++;
-            } else {
-                output[i] = input[evenIndex];
-                evenIndex--;
-            }
-        }
+	
+	public static void main(String[] args)
+	  {
+		
+		Scanner in=new Scanner(System.in);
+		System.out.println("Enter the length:");
+		int len=in.nextInt();
+		
+		System.out.println("Enter the values of the array:");
+		
+	    int[] originalArray=new int[len];
+	    for(int i=0;i<len;i++) {
+	    	originalArray[i]=in.nextInt();
+	    }
 
-        for (int i = n-1; i>=0; i--) {
-       
-          System.out.print(output[i]+" ");
-         
-        }
-      
-    }
-}
-
+	    int[] copyArray=new int[len];
+	    
+	    for(int i = 0; i < len; i++)
+	    	 copyArray[i] = originalArray[i];
+	 
+	    Arrays.sort( copyArray);
+	    
+	    findArray(originalArray, copyArray,len);
+	 
+	    for(int i = 0; i < len; i++)
+	    {
+	      System.out.print(originalArray[i]+" ");
+	    }
+	  }
+	}
